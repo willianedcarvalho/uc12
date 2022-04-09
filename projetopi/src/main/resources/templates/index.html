@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href=" materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+<title>EventosApp_Media3</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Lista de Eventos:</h1>
+
+
+		<a href="/cadastrarEvento" class="waves-effect waves-light btn"><i
+			class="material-icons right">add_circle_outline</i>Cadastrar Eventos</a>
+	<table>
+	<thead>
+		<tr>
+			<th>Turno</th>
+			<th>Produto</th>
+			<th>Quantidade</th>
+			<th>Deletar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="evento:${eventos}">
+		<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0,evento.codigo)).build()}"><span th:text="${evento.Turno}"></span></a></td>
+		<td><span th:text="${evento.Produto}"> </span></td>
+		<td><span th:text="${evento.Quantidade}"> </span></td>
+		<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletarEvento').arg(0,evento.codigo)).build()}"><i class="material-icons right">delete</i>Deletar</a></td>
+		</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript"
+		src=" https://code/jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src=" materialize/js/materialize.min.js"></script>
+
+</body>
+</html>
+
